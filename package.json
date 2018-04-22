@@ -1,0 +1,11 @@
+{
+  "name": "quickchat",
+  "version": "1.0.0",
+  "description": "Application allowing you to post messages on a wall for a coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jasmine"
+  },
+  "author": "",
+  "license": "ISC"
+}
