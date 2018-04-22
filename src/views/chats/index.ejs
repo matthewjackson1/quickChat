@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <main class="container">
+      <% include ../static/partials/navbar.ejs %>
+
+      <h1>Messages</h1>
+
+      <ul class="list-group">
+<!-- #1 -->
+        <% chats.forEach((chat) => { %>
+<!-- #2 -->
+          <li class="list-group-item">
+            <%= chat.author %>
+          </li>
+          <li class="list-group-item">
+            <%= chat.message %>
+          </li>
+        <% }) %>
+      </ul>
+
+    </main>
+  </body>
+</html>
