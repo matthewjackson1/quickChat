@@ -37,4 +37,36 @@ describe("routes : chats", () => {
     });
 
   });
+
+  describe("POST /topics/create", () => {
+    const options = {
+      url: `${base}create`,
+      form: {
+        author: "Beyonce Knowles",
+        message: "What's your favorite Destiny's Child song?"
+      }
+    };
+
+    it("should create a new message and refresh", (done) => {
+
+//#1
+      request.post(options,
+
+        (err, res, body) => {
+          Chat.findOne({where: {author: "Beyonce Knowles"}})
+          .then((chat) => {
+            expect(res.statusCode).toBe(303);
+            expect(chat.author).toBe("Beyonce Knowles");
+            expect(chat.message).toBe("What's your favorite Destiny's Child song?");
+            done();
+          })
+          .catch((err) => {
+            console.log(err);
+            done();
+          });
+        }
+      );
+    });
+  });
+
 });

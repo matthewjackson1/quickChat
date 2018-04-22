@@ -2,7 +2,7 @@ const Chat = require("./models").Chat;
 
 module.exports = {
 
-  getAllTopics(callback){
+  getAllChats(callback){
     return Chat.all()
 
     .then((chats) => {
@@ -11,6 +11,19 @@ module.exports = {
     .catch((err) => {
       callback(err);
       console.log(err);
+    })
+  },
+
+  addMessage(newMessage, callback){
+    return Chat.create({
+      author: newMessage.author,
+      message: newMessage.message
+    })
+    .then((message) => {
+      callback(null, message);
+    })
+    .catch((err) => {
+      callback(err);
     })
   }
 }
